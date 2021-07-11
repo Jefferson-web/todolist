@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RestService } from './rest.service';
-import { State } from '../interfaces/State';
 import { Observable } from 'rxjs';
 import { Task } from '../interfaces/Task';
 
@@ -15,11 +14,12 @@ export class TaskService extends RestService {
   }
 
   GetTasks(): Observable<Task[]> {
+    console.log(this.url);
     return this.http.get<Task[]>(this.url);
   }
 
   ChangeState(task: Task) {
-    return this.http.put(this.url + `/${task.task_id}`, task);
+    return this.http.put(this.url + `/${task._id}`, task);
   }
 
   get url() {

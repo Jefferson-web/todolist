@@ -1,6 +1,6 @@
 export interface Task{
-    task_id: number;
-    state_id: number;
+    _id: string;
+    state: string;
     description: string;
     create_at:Date;
 }

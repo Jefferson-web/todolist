@@ -31,13 +31,13 @@ export class AppComponent implements OnInit {
 
   getTasks() {
     this._stateService.GetStates().pipe(
-      switchMap(states => {
-        this.states = states;
+      switchMap((response: any) => {
+        this.states = response.states;
         this.cols = 12 / this.states.length;
         return this._taskService.GetTasks();
       })
-    ).subscribe((tasks: any) => {
-      this.tasks = tasks;
+    ).subscribe((response: any) => {
+      this.tasks = response.tasks;
     });
   }
 
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  createTask(state_id: number){
+  createTask(state_id: string){
     console.log(state_id);
     this.dialog.open(TaskFormComponent);
   }

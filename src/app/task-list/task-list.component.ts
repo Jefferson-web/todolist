@@ -14,7 +14,7 @@ export class TaskListComponent implements OnInit {
 
   @Output() onDrop: EventEmitter<CdkDragDrop<Task[]>> = new EventEmitter<CdkDragDrop<Task[]>>();
   private _tasks: Task[];
-  private _stateId: number;
+  private _stateId: string;
 
   constructor(private _taskRepository: TaskService,
             private notifier: NotifierService) { }
@@ -25,7 +25,7 @@ export class TaskListComponent implements OnInit {
   @Input('tasks')
   set tasks(tasks: Task[]) {
     if (!tasks) return;
-    this._tasks = tasks.filter(task => task.state_id == this.stateId);
+    this._tasks = tasks.filter(task => task.state == this.stateId);
   }
 
   get tasks() {
@@ -33,7 +33,7 @@ export class TaskListComponent implements OnInit {
   }
 
   @Input('state_id')
-  set stateId(stateId: number) {
+  set stateId(stateId: string) {
     this._stateId = stateId;
   }
 
@@ -50,7 +50,7 @@ export class TaskListComponent implements OnInit {
       let result = this.tasks.filter(task => !clone.includes(task));
       if (result.length > 0) {
         itemDragged = result[0];
-        itemDragged.state_id = this.stateId;
+        itemDragged.state = this.stateId;
         this._taskRepository.ChangeState(itemDragged).subscribe(response => {          
           this.notifier.notify('success', 'Trea actualizada');
         }, err => {

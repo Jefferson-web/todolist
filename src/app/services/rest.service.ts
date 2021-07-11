@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
 
-  readonly baseURL: string = 'https://localhost:44370/api';
+  readonly baseURL: string = environment.APIEndpoint;
 
   constructor() { }
 }

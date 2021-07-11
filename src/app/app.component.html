@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-{{ cols }} mt-5" *ngFor="let state of states">
-        <button mat-raised-button class="btn-create" (click)="createTask(state.state_id);">+</button>
+        <button mat-raised-button class="btn-create" (click)="createTask(state._id);">+</button>
         <h1 style="text-align: center;">{{ state.description }}</h1>
-        <task-list [tasks]="tasks" [state_id]="state.state_id" (onDrop)="drop($event)"></task-list>
+        <task-list [tasks]="tasks" [state_id]="state._id" (onDrop)="drop($event)"></task-list>
       </div>
     </div>
   </div>
