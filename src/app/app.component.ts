@@ -53,8 +53,15 @@ export class AppComponent implements OnInit {
   }
 
   createTask(state_id: string){
-    console.log(state_id);
-    this.dialog.open(TaskFormComponent);
+    const dialogRef = this.dialog.open(TaskFormComponent, {
+      width: '500px'
+    });
+    dialogRef.afterClosed().subscribe((task: Task) => {
+      task.state = state_id;
+      this._taskService.CreateTask(task).subscribe(newTask => {
+        this.tasks = [...this.tasks, newTask];
+      });
+    });
   }
 
 }

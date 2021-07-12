@@ -1,1 +1,13 @@
-<p>task-form works!</p>
+<h1 mat-dialog-title>Agregar nueva tarea</h1>
+<div mat-dialog-content>
+<form>
+    <mat-form-field class="example-full-width" appearance="fill" style="width:100%; font-size: 16px">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput placeholder="Ex. Mi nueva tarea es ..." [(ngModel)]="task.description" name="description"></textarea>
+      </mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="Save();">Ok</button>
+</div>

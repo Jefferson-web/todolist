@@ -22,6 +22,10 @@ export class TaskService extends RestService {
     return this.http.put(this.url + `/${task._id}`, task);
   }
 
+  CreateTask(task: Task){
+    return this.http.post(this.url, task);
+  }
+
   get url() {
     return this.baseURL + '/Task';
   }

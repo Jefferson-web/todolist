@@ -10,6 +10,8 @@ import { NotifierModule } from 'angular-notifier';
 import {MatButtonModule} from '@angular/material/button';
 import { TaskFormComponent } from './task-form/task-form.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -63,6 +65,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         autoHide: 2500
       }
     }),
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

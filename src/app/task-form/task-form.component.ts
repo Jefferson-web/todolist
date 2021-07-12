@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Task } from '../interfaces/Task';
 
 @Component({
   selector: 'app-task-form',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskFormComponent implements OnInit {
 
-  constructor() { }
+  task: Task;
 
+  constructor(public dialogRef: MatDialogRef<TaskFormComponent>) { 
+  }
+  
   ngOnInit(): void {
+    this.task = {
+      description: ""
+    }
+  }
+
+  Save(){
+    this.dialogRef.close(this.task);
   }
 
 }
